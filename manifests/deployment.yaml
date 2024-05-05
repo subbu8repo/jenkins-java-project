@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dotnet-course
+  labels:
+    app: dotnet-course
+  namespace: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dotnet-course
+  template:
+    metadata:
+      labels:
+        app: dotnet-course
+    spec:
+      containers:
+        - name: dotnet-course
+          image: healthcon.azurecr.io/demoo-1714918632980:latest
+          ports:
+            - containerPort: 8080
